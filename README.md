@@ -4,14 +4,14 @@ EduPulse AI is a full-stack, lightweight web application built to help teachers 
 
 ---
 
-## 🌟 Hackathon Stand-out Feature: AI Smart-Grouping & Peer-Tutoring Engine
+## Hackathon Stand-out Feature: AI Smart-Grouping & Peer-Tutoring Engine
 EduPulse AI doesn't just show charts; it actively organizes the classroom to bridge learning gaps:
 1. **Dynamic Remedial Groups**: Automatically groups students struggling with identical concepts (score <60%) and generates a tailored group activity (e.g. paper fraction strips, friction ramps, circuit building).
 2. **Peer-Tutoring Pairings**: Matches a "Student Mentor" (scored >85% in a concept) with a "Student Peer" (scored <60% in that same concept) for a peer-guided worksheet review.
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 - **Frontend**: React, Tailwind CSS, Chart.js (via `react-chartjs-2`), Lucide Icons.
 - **Backend**: FastAPI (Python), Uvicorn.
 - **Database**: SQLite (SQLAlchemy ORM).
@@ -19,7 +19,7 @@ EduPulse AI doesn't just show charts; it actively organizes the classroom to bri
 
 ---
 
-## 📁 Project Directory Structure
+## Project Directory Structure
 ```
 edupulse-ai/
 ├── main.py                  # Root entrypoint to launch backend uvicorn server
@@ -53,7 +53,7 @@ edupulse-ai/
 
 ---
 
-## 🚀 Setup & Execution Guide
+## Setup & Execution Guide
 
 ### Prerequisites
 - **Python 3.8+**
@@ -85,7 +85,7 @@ edupulse-ai/
 
 ---
 
-## 📡 API Endpoints Documentation
+## API Endpoints Documentation
 
 ### Student Management
 - `GET /api/students`: Lists all students.
