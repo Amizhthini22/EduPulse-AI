@@ -44,7 +44,7 @@ export default function StudentDetail({ studentId, onBack }) {
     async function fetchStudentDetail() {
       if (!studentId) return;
       try {
-        const res = await fetch(`http://localhost:8000/api/students/${studentId}`);
+        const res = await fetch(`/api/students/${studentId}`);
         const data = await res.json();
         setStudent(data);
       } catch (err) {
@@ -58,8 +58,8 @@ export default function StudentDetail({ studentId, onBack }) {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-brand-500"></div>
+      <div className="flex items-center justify-center min-h-[60vh]" role="status" aria-label="Loading student data">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-brand-500" />
       </div>
     );
   }

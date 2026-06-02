@@ -27,7 +27,7 @@ export default function ClassroomInsights() {
   useEffect(() => {
     async function fetchInsights() {
       try {
-        const res = await fetch('http://localhost:8000/api/dashboard/insights');
+        const res = await fetch('/api/dashboard/insights');
         const result = await res.json();
         setData(result);
       } catch (err) {

@@ -8,7 +8,7 @@ export default function SmartGroups() {
   useEffect(() => {
     async function fetchGroups() {
       try {
-        const res = await fetch('http://localhost:8000/api/dashboard/groupings');
+        const res = await fetch('/api/dashboard/groupings');
         const result = await res.json();
         setData(result);
       } catch (error) {

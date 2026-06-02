@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
-
+/* Fonts are loaded in index.html to avoid FOUC */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,6 +7,24 @@
   body {
     @apply bg-slate-900 text-slate-100 min-h-screen antialiased;
   }
+
+  /* Accessibility: skip to main content link */
+  .skip-link {
+    @apply absolute -top-full left-2 z-[9999] px-4 py-2 bg-brand-600 text-white text-sm font-bold rounded-b-xl;
+  }
+  .skip-link:focus {
+    @apply top-0;
+  }
+
+  /* Ensure focus indicators are always visible (WCAG 2.1 AA) */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-400;
+  }
+
+  /* Buttons and interactive elements must meet 44x44px minimum touch target */
+  button, [role="button"] {
+    @apply min-h-[44px] min-w-[44px];
+  }
 }
 
 /* Premium Scrollbars */
@@ -15,15 +32,12 @@
   width: 6px;
   height: 6px;
 }
-
 ::-webkit-scrollbar-track {
   @apply bg-transparent;
 }
-
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-700/60 rounded-full transition-colors duration-200;
+  @apply bg-slate-700/60 rounded-full;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-slate-600;
 }
@@ -35,28 +49,39 @@
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
+/* Reduced motion: disable backdrop-filter and animations for low-end devices */
+@media (prefers-reduced-motion: reduce) {
+  .glass-card {
+    backdrop-filter: none;
+    background: rgba(30, 41, 59, 0.95);
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 .glow-hover {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 .glow-hover:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.15), 0 8px 10px -6px rgba(59, 130, 246, 0.15);
+  box-shadow:
+    0 10px 25px -5px rgba(59, 130, 246, 0.15),
+    0 8px 10px -6px rgba(59, 130, 246, 0.15);
   border-color: rgba(59, 130, 246, 0.3);
 }
 
-/* Page transit keyframes */
+/* Page transition keyframes */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
 .animate-fade-in {
   animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Offline banner */
+.offline-banner {
+  @apply fixed bottom-0 left-0 right-0 z-50 bg-amber-600 text-white text-center text-xs font-bold py-2 px-4;
 }

@@ -27,14 +27,12 @@ export default function AssessmentUpload({ onUploadSuccess }) {
   useEffect(() => {
     async function fetchStudents() {
       try {
-        const res = await fetch('http://localhost:8000/api/students');
+        const res = await fetch('/api/students');
         const data = await res.json();
         setStudents(data);
-        if (data.length > 0) {
-          setSelectedStudentId(data[0].id);
-        }
+        if (data.length > 0) setSelectedStudentId(data[0].id);
       } catch (err) {
-        console.error("Error loading students list:", err);
+        console.error('Error loading students list:', err);
       } finally {
         setLoadingStudents(false);
       }
@@ -135,7 +133,7 @@ export default function AssessmentUpload({ onUploadSuccess }) {
     };
 
     try {
-      const res = await fetch('http://localhost:8000/api/assessments', {
+      const res = await fetch('/api/assessments', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

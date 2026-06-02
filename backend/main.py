@@ -47,6 +47,11 @@ def get_all_analyzed_students(db: Session) -> List[Dict[str, Any]]:
         analyzed.append(analysis.analyze_student_assessments(s, assessments))
     return analyzed
 
+@app.get("/api/health")
+def health_check():
+    """Lightweight health check for connectivity detection by PWA."""
+    return {"status": "ok", "version": "1.0.0"}
+
 # --- STUDENT ENDPOINTS ---
 
 @app.get("/api/students", response_model=List[schemas.StudentOut])
