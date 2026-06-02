@@ -1,3 +1,4 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
@@ -10,20 +11,22 @@ import analysis
 from database import engine, Base, get_db
 from sample_data import seed_sample_data
 
-# Create database tables
-Base.metadata.create_all(bind=engine)
-
-# Seed database on startup
-db = next(get_db())
-try:
-    seed_sample_data(db)
-finally:
-    db.close()
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Create database tables and seed data on startup
+    Base.metadata.create_all(bind=engine)
+    db = next(get_db())
+    try:
+        seed_sample_data(db)
+    finally:
+        db.close()
+    yield
 
 app = FastAPI(
     title="EduPulse AI API",
     description="API server for tracking learning gaps, generating automated feedback, and classroom groupings.",
-    version="1.0.0"
+    version="1.0.0",
+    lifespan=lifespan
 )
 
 # Enable CORS for frontend connection (port 5173 for Vite React app)
