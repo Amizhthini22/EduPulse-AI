@@ -4,7 +4,7 @@ EduPulse AI is a full-stack, lightweight web application built to help teachers 
 
 ---
 
-## Hackathon Stand-out Feature: AI Smart-Grouping & Peer-Tutoring Engine
+## Stand-out Feature: AI Smart-Grouping & Peer-Tutoring Engine
 EduPulse AI doesn't just show charts; it actively organizes the classroom to bridge learning gaps:
 1. **Dynamic Remedial Groups**: Automatically groups students struggling with identical concepts (score <60%) and generates a tailored group activity (e.g. paper fraction strips, friction ramps, circuit building).
 2. **Peer-Tutoring Pairings**: Matches a "Student Mentor" (scored >85% in a concept) with a "Student Peer" (scored <60% in that same concept) for a peer-guided worksheet review.
